@@ -1,30 +1,17 @@
 import streamlit as st
 import pickle
 
-import numpy as np
-import pandas as pd 
-import matplotlib.pyplot as plt
-import seaborn as sns
-from scipy.stats import ttest_ind
-import statsmodels.formula.api as smf
-
 model = pickle.load(open('RF_price_predicting_model.pkl', 'rb'))
 
-
-# def main():
-st.title("Selling Price Predictor ")
-st.markdown("##### Are you planning to sell your car !?\n##### So let's try evaluating the price ")
-
-# @st.cache(allow_output_mutation=True)
-# def get_model():
-#     model = pickle.load(open('RF_price_predicting_model.pkl','rb'))
-#     return model
+st.title("Price Selling Predictor of your vehicle ")
+st.markdown("##### Are you planning to sell your car !?\n##### So let's try evaluating the price of your car")
+st.markdown("#### Fill in the details below and get your expected selling price #####")
 
 st.write('')
 st.write('')
 
-years = st.number_input('In which year car was purchased ?', 1990, 2020, step=1, key='year')
-Years_old = 2020 - years
+years = st.number_input('In which year your car was purchased ?', 1990, 2023, step=1, key='year')
+Years_old = 2023 - years
 
 Present_Price = st.number_input('What is the current ex-showroom price of the car ?  (In lakhs)', 0.00, 50.00,
                                 step=0.5, key='present_price')
@@ -32,7 +19,7 @@ Present_Price = st.number_input('What is the current ex-showroom price of the ca
 Kms_Driven = st.number_input('What is distance completed by the car in Kilometers ?', 0.00, 500000.00, step=500.00,
                                 key='drived')
 
-Owner = st.radio("The number of owners the car had previously ?", (0, 1, 3), key='owner')
+Owner = st.radio("The number of owners the car had previously ?", (0, 1, 2, 3), key='owner')
 
 Fuel_Type_Petrol = st.selectbox('What is the fuel type of the car ?', ('Petrol', 'Diesel', 'CNG'), key='fuel')
 if (Fuel_Type_Petrol == 'Petrol'):
@@ -51,7 +38,7 @@ if (Seller_Type_Individual == 'Individual'):
 else:
     Seller_Type_Individual = 0
 
-Transmission_Mannual = st.selectbox('What is the Transmission Type ?', ('Manual', 'Automatic'), key='manual')
+Transmission_Mannual = st.selectbox('What is the Transmission Type of the car ?', ('Manual', 'Automatic'), key='manual')
 if (Transmission_Mannual == 'Mannual'):
     Transmission_Mannual = 1
 else:
@@ -71,5 +58,4 @@ if st.button("Estimate Price", key='predict'):
         st.warning("Opps!! Something went wrong\nTry again")
 
 
-# if __name__ == "__main__":
-#     main()
+
