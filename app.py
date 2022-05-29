@@ -22,8 +22,8 @@ for basename in os.listdir(folder):
         
         fnames.append(fname)
 
-st.sidebar.title("Car Analysis")
-st.sidebar.markdown("Welcome!! This is my project on car analysis for Engage 2022")
+st.sidebar.title("Vehicle Car Analysis")
+st.sidebar.markdown("This is my project for Microsoft Engage 2022 on Vehicle Car Data Analysis")
 st.sidebar.image("car.jpg")
 fname_to_run = st.sidebar.selectbox('Select an app', fnames)
 fake_module_count = 0
