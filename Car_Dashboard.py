@@ -11,8 +11,8 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 DATA_URL = ("with_loc.csv")
 
 st.title('Automotive Industry Data Analysis')
-st.text('This is my Microsoft Engage 2022 project. Let us have a look on the analysis')
-st.text('of cars dataset.') 
+st.write('This is my project for Microsoft Engage 2022. Let us have a look on the analysis of the chosen dataset')
+st.write('of automotive industry dataset')
 
 st.write('')
 
@@ -61,7 +61,7 @@ cars.columns
 # ---------------------------------------------------------------------------------------------------
 # 2. EXPLORATORY DATA ANALYSIS---------------------------------------------------------------------
 
-st.header('Car Price')
+st.header('Vehicle Price Analysis')
 st.text('Let us have a look on car price ditribution plot and car price spread of the')
 st.text('    given dataset.')
 fig1 = plt.figure(figsize=(16,8))
@@ -71,7 +71,7 @@ plt.title('Car Price Distribution Plot')
 sns.distplot(cars.price)
 
 plt.subplot(1,2,2)
-plt.title('Car Price Spread')
+plt.title('Car Price Spread Plot')
 sns.boxplot(y=cars.price)
 
 plt.show()
@@ -91,7 +91,7 @@ st.write('')
 st.write('')
 st.write('')
 
-st.header('Categorical Data')
+st.header('Categorical Data Type')
 
 st.text('- CompanyName')
 st.text('- Symboling')
@@ -113,18 +113,18 @@ fig2 = plt.figure(figsize=(16, 8))
 
 plt.subplot(1,3,1)
 plt1 = cars.CompanyName.value_counts().plot(kind='bar')
-plt.title('Most Favourable Company')
+plt.title('Most Preferred Company')
 plt1.set(xlabel = 'Car company', ylabel='Frequency of company')
 
 plt.subplot(1,3,2)
 plt1 = cars.fueltype.value_counts().plot(kind='bar')
-plt.title('Most Favourable Fuel Type')
+plt.title('Most Preferred Fuel Type')
 plt1.set(xlabel = 'Fuel Type', ylabel='Frequency of fuel type')
 
 plt.subplot(1,3,3)
 plt1 = cars.carbody.value_counts().plot(kind='bar')
-plt.title('Most Favourable Car Type')
-plt1.set(xlabel = 'Car Type', ylabel='Frequency of Car type')
+plt.title('Most Preferred Car Type')
+plt1.set(xlabel = 'Car Type', ylabel='Count of Car type')
 
 plt.show()
 st.write(fig2)
@@ -138,7 +138,7 @@ st.write('')
 st.write('')
 st.write('')
 
-st.header('Symbolysing')
+st.header('Symbolysing of Vehicle')
 fig3 = plt.figure(figsize=(20,8))
 
 plt.subplot(1,2,1)
@@ -146,7 +146,7 @@ plt.title('Symboling Histogram')
 sns.countplot(cars.symboling, palette=("cubehelix"))
 
 plt.subplot(1,2,2)
-plt.title('Symboling vs Price')
+plt.title('Symboling of Car vs Price of Car')
 sns.boxplot(x=cars.symboling, y=cars.price, palette=("cubehelix"))
 
 plt.show()
@@ -164,7 +164,7 @@ st.write('')
 st.write('')
 
 
-st.header('Engine')
+st.header('Engine of Vehicle')
 fig4 = plt.figure(figsize=(18,6))
 
 plt.subplot(1,2,1)
@@ -192,7 +192,7 @@ st.write('')
 st.write('')
 st.write('')
 
-st.header('Average Price')
+st.header('Average Price of Vehicle')
 fig5 = plt.figure(figsize=(18,6))
 
 df = pd.DataFrame(cars.groupby(['CompanyName'])['price'].mean().sort_values(ascending = False))
@@ -231,7 +231,7 @@ plt.title('Door Number Histogram')
 sns.countplot(cars.doornumber, palette=("plasma"))
 
 plt.subplot(1,2,2)
-plt.title('Door Number vs Price')
+plt.title('Door Number vs Price of Car')
 sns.boxplot(x=cars.doornumber, y=cars.price, palette=("plasma"))
 
 plt.show()
@@ -244,7 +244,7 @@ st.write('')
 st.write('')
 st.write('')
 
-st.header('Aspiration')
+st.header('Aspiration of Vehicle')
 fig7 = plt.figure(figsize=(15,5))
 
 plt.subplot(1,2,1)
@@ -297,7 +297,7 @@ st.write('')
 st.write('')
 
 
-st.header('Numerical Data')
+st.header('Numerical Data Type')
 st.header('Car- Length, Width, Height, Weight')
 def scatter(x,fig):
     plt.subplot(5,2,fig)
@@ -318,7 +318,7 @@ st.write(fig9)
 
 st.text('Inference :')
 
-st.text('1. carwidth, carlength and curbweight seems to have a poitive correlation with price.')
+st.text('1. carwidth, carlength and curbweight seems to have a poitive correlation with price of car.')
 st.text('2. carheight does not show any significant trend with price.')
 st.write('')
 st.write('')
@@ -339,7 +339,7 @@ st.text('Inference :')
 
 st.text('1. enginesize, boreratio, horsepower, wheelbase - seem to have a significant')
 st.text('positive correlation with price.')
-st.text('2. citympg, highwaympg - seem to have a significant negative correlation with price.')
+st.text('2. citympg, highwaympg - seem to have a significant negative correlation with car price.')
 st.write('')
 st.write('')
 st.write('')
